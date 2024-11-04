@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Drawing;
 
@@ -7,6 +8,13 @@ using System.Drawing;
 
 class Program
 {
+    static ArrayList QuickSortTempo = new();
+    static ArrayList SelectionSortTempo = new();
+    static ArrayList InsertionSortTempo = new();
+    static ArrayList MergeSortTempo = new();
+    static ArrayList BubbleSortTempo = new();
+
+
     static void Main(string[] args)
     {
         Random random = new Random();
@@ -18,13 +26,18 @@ class Program
 
 
         //array = new int[random.Next(1, 5) * 256];
-
-        SortTests(sw, array = new int[500000], random);
-        //SortTests(sw, array = new int[256], random);
-        //SortTests(sw, array = new int[512], random);
-        //SortTests(sw, array = new int[1024], random);
-        //SortTests(sw, array = new int[2048], random);
-        //SortTests(sw, array = new int[4096], random);
+        /*
+        SortTests(sw, array = new int[256000], random);
+        SortTests(sw, array = new int[512000], random);
+        SortTests(sw, array = new int[1024000], random);
+        SortTests(sw, array = new int[2048000], random);
+        SortTests(sw, array = new int[4076000], random);
+        */
+        SortTests(sw, array = new int[2560], random);
+        SortTests(sw, array = new int[5120], random);
+        SortTests(sw, array = new int[10240], random);
+        SortTests(sw, array = new int[20480], random);
+        SortTests(sw, array = new int[40960], random);
 
 
         /*imprimir(array);
@@ -35,6 +48,13 @@ class Program
             ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10.0);
 
         Console.WriteLine("TEMPO TOTAL: " + formated);*/
+
+        Console.WriteLine("QuickSortTempo:     [{0}]", string.Join(", ", QuickSortTempo.ToArray()));
+        Console.WriteLine("SelectionSortTempo: [{0}]", string.Join(", ", SelectionSortTempo.ToArray()));
+        Console.WriteLine("InsertionSortTempo: [{0}]", string.Join(", ", InsertionSortTempo.ToArray()));
+        Console.WriteLine("MergeSortTempo:     [{0}]", string.Join(", ", MergeSortTempo.ToArray()));
+        Console.WriteLine("BubbleSortTempo:    [{0}]", string.Join(", ", BubbleSortTempo.ToArray()));
+
 
     }
 
@@ -49,49 +69,50 @@ class Program
         sw.Start();
         arr_return = QuickSort(array);
         sw.Stop();
-        imprimirTempo(sw, "QuickSort", array.Length);
+        QuickSortTempo.Add(imprimirTempo(sw, "QuickSort", array.Length));
         //imprimir(arr_return);
 
         sw.Start();
         arr_return = SelectionSort(array);
         sw.Stop();
-        imprimirTempo(sw, "SelectionSort", array.Length);
+        SelectionSortTempo.Add(imprimirTempo(sw, "SelectionSort", array.Length));
         //imprimir(arr_return);
 
-        
+
         sw.Start();
         arr_return = InsertionSort(array);
         sw.Stop();
-        imprimirTempo(sw, "InsertionSort", array.Length);
+        InsertionSortTempo.Add(imprimirTempo(sw, "InsertionSort", array.Length));
         //imprimir(arr_return);
 
         sw.Start();
         arr_return = MergeSort(array);
         sw.Stop();
-        imprimirTempo(sw, "MergeSort", array.Length);
+        MergeSortTempo.Add(imprimirTempo(sw, "MergeSort", array.Length));
         //imprimir(arr_return);
 
         sw.Start();
         arr_return = BubbleSort(array);
         sw.Stop();
-        imprimirTempo(sw, "BubbleSort", array.Length);
+        BubbleSortTempo.Add(imprimirTempo(sw, "BubbleSort", array.Length));
         //imprimir(arr_return);
 
 
     }
 
-    static void imprimirTempo(Stopwatch sw, String sort, int size)
+    static double imprimirTempo(Stopwatch sw, String sort, int size)
     {
         TimeSpan ts = sw.Elapsed;
 
         string formated = String.Format("{0:00}:{1:00}:{2:00}.{3:0000}",
             ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10.0);
 
-        Console.WriteLine("TEMPO TOTAL: " + formated);
-        Console.WriteLine("Sort: " + sort);
-        Console.WriteLine("Size: " + size);
-        Console.WriteLine();
+        //Console.WriteLine("TEMPO TOTAL: " + formated);
+        //Console.WriteLine("Sort: " + sort);
+        //Console.WriteLine("Size: " + size);
+        //Console.WriteLine();
         sw.Reset();
+        return ts.Milliseconds * 10;
     }
 
     static void imprimir(int[] array)
@@ -203,7 +224,7 @@ class Program
     {
         if (arr.Length <= 1) return (int[])arr.Clone();
 
-        return QuickSort((int[]) arr.Clone(), 0, arr.Length - 1);
+        return QuickSort((int[])arr.Clone(), 0, arr.Length - 1);
     }
 
     private static int[] QuickSort(int[] arr, int low, int high)
