@@ -7,7 +7,7 @@ namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
     public class RadixSort
     {
-        public static int[] RadixSort(int[] arr)
+        public static int[] SortMethod(int[] arr)
     {
         int max = arr.Max();
         int exp = 1;

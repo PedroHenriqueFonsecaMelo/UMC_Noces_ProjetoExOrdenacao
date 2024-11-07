@@ -7,7 +7,7 @@ namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
     public class HeapSort
     {
-        public static int[] HeapSort(int[] arr)
+        public static int[] SortMethod(int[] arr)
         {
             int n = arr.Length;
             int[] sortedArray = (int[])arr.Clone();

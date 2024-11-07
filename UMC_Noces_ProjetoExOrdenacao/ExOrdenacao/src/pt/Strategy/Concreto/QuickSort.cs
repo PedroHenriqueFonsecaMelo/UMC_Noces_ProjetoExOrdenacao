@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ExOrdenacao.src.pt.Strategy.Contexto;
 
 namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
     public class QuickSort : ISortAlgorithm
 {
-    public int[] Sort(int[] arr)
+    public int[] SortMethod(int[] arr)
     {
         if (arr.Length <= 1) return (int[])arr.Clone();
         return QuickSortAlgorithm((int[])arr.Clone(), 0, arr.Length - 1);

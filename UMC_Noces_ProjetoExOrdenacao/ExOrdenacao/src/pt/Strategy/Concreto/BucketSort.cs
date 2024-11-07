@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ExOrdenacao.src.pt.Strategy.Contexto;
 
 namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
-    public class BucketSort
+    public class BucketSort : ISortAlgorithm
     {
-        public static int[] BucketSort(int[] arr)
+        public int[] SortMethod(int[] arr)
         {
             if (arr.Length <= 1)
                 return arr;

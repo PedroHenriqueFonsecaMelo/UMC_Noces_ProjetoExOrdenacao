@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ExOrdenacao.src.pt.Strategy.Contexto;
 
 namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
     public class SelectionSort : ISortAlgorithm
 {
-    public int[] Sort(int[] arr)
+    public int[] SortMethod(int[] arr)
     {
         int n = arr.Length;
         int[] sortedArray = (int[])arr.Clone();

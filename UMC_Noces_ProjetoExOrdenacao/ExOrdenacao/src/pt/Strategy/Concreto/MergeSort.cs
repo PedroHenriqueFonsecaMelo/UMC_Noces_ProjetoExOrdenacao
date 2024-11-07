@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ExOrdenacao.src.pt.Strategy.Contexto;
 
 public class MergeSort : ISortAlgorithm
 {
-    public int[] Sort(int[] arr)
+    public int[] SortMethod(int[] arr)
     {
         if (arr.Length <= 1) return (int[])arr.Clone();
         int mid = arr.Length / 2;
-        int[] left = Sort(arr[..mid]);
-        int[] right = Sort(arr[mid..]);
+        int[] left = SortMethod(arr[..mid]);
+        int[] right = SortMethod(arr[mid..]);
         return Merge(left, right);
     }
 

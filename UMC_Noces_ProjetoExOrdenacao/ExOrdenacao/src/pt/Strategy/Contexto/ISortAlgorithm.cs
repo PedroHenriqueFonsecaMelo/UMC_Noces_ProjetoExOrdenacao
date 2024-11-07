@@ -7,6 +7,6 @@ namespace ExOrdenacao.src.pt.Strategy.Contexto
 {
     public interface ISortAlgorithm
     {
-        int[] Sort(int[] arr);
+        public int[] SortMethod(int[] arr);
     }
 }

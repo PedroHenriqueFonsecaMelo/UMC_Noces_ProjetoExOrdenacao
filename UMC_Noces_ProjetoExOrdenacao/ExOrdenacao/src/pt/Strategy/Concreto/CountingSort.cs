@@ -7,7 +7,7 @@ namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
     public class CountingSort
     {
-        public static int[] CountingSort(int[] arr)
+        public static int[] SortMethod(int[] arr)
         {
             if (arr.Length == 0) return arr;
 

@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ExOrdenacao.src.pt.Strategy.Contexto;
 
 public class BubbleSort : ISortAlgorithm
 {
-    public int[] Sort(int[] arr)
+    public int[] SortMethod(int[] arr)
     {
         int n = arr.Length;
         int[] sortedArray = (int[])arr.Clone();

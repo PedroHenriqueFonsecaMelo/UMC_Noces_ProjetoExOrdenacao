@@ -162,24 +162,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alunocmc\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Pedro Henrique\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alunocmc\\Desktop\\UMC_Noces_ProjetoExOrdenacao\\UMC_Noces_ProjetoExOrdenacao\\ExOrdenacao\\ExOrdenacao.csproj",
+      "projectUniqueName": "C:\\Users\\Pedro Henrique\\Documents\\Umc\\UMC_Noces_ProjetoExOrdenacao\\UMC_Noces_ProjetoExOrdenacao\\ExOrdenacao\\ExOrdenacao.csproj",
       "projectName": "ExOrdenacao",
-      "projectPath": "C:\\Users\\alunocmc\\Desktop\\UMC_Noces_ProjetoExOrdenacao\\UMC_Noces_ProjetoExOrdenacao\\ExOrdenacao\\ExOrdenacao.csproj",
-      "packagesPath": "C:\\Users\\alunocmc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alunocmc\\Desktop\\UMC_Noces_ProjetoExOrdenacao\\UMC_Noces_ProjetoExOrdenacao\\ExOrdenacao\\obj\\",
+      "projectPath": "C:\\Users\\Pedro Henrique\\Documents\\Umc\\UMC_Noces_ProjetoExOrdenacao\\UMC_Noces_ProjetoExOrdenacao\\ExOrdenacao\\ExOrdenacao.csproj",
+      "packagesPath": "C:\\Users\\Pedro Henrique\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Pedro Henrique\\Documents\\Umc\\UMC_Noces_ProjetoExOrdenacao\\UMC_Noces_ProjetoExOrdenacao\\ExOrdenacao\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\alunocmc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Pedro Henrique\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -236,7 +231,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

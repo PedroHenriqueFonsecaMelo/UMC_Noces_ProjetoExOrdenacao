@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using ExOrdenacao.src.pt.Strategy;
+using ExOrdenacao.src.pt.Strategy.Concreto;
+using ExOrdenacao.src.pt.Strategy.Contexto;
 using Spectre.Console;
 
 namespace ExOrdenacao.src.pt
@@ -27,7 +30,7 @@ namespace ExOrdenacao.src.pt
             Random random = new Random();
             Stopwatch sw = Stopwatch.StartNew();
 
-            int[] tamanho = { 5000, 10000, 20000, 40000, 80000 };
+            int[] tamanho = { 500, 1000, 2000, 4000, 8000 };
 
             // Testa para diferentes tamanhos de arrays
             foreach (int size in tamanho)
@@ -73,7 +76,7 @@ namespace ExOrdenacao.src.pt
             for (int i = 0; i < 3; i++)
             {
                 sw.Start();
-                algorithm.Sort(array);  // Executa o algoritmo
+                algorithm.SortMethod(array);  // Executa o algoritmo
                 sw.Stop();
 
                 totalTime += sw.Elapsed.TotalMilliseconds;
