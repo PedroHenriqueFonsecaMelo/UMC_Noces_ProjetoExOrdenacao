@@ -1,0 +1,13 @@
+[Pedido|precoTotal:decimal;pesoTotal:decimal;calculoFrete:ICalculaFrete|SetCalculaFrete(calculo:ICalculaFrete);CalcularFrete()]->[ICalculaFrete]
+[ICalculaFrete]^-.[CalculoFretePeso|CalcularFrete(pedido:Pedido):decimal]
+[ICalculaFrete]^-.[CalculoFretePreco|CalcularFrete(pedido:Pedido):decimal]
+[ICalculaFrete]^-.[CalculoFreteFixo|CalcularFrete(pedido:Pedido):decimal]
+
+
+[Pedido|precoTotal:decimal;pesoTotal:decimal;desconto:decimal;frete:decimal;calculoFrete:ICalculaFrete;calculoDesconto:ICalculaDesconto|SetCalculaFrete(calculo:ICalculaFrete);SetCalculaDesconto(calculo:ICalculaDesconto);AplicarDesconto();CalcularFrete()]->[ICalculaFrete]
+[ICalculaFrete]^-.[CalculoFretePeso|CalcularFrete(pedido:Pedido):decimal]
+[ICalculaFrete]^-.[CalculoFretePreco|CalcularFrete(pedido:Pedido):decimal]
+[ICalculaFrete]^-.[CalculoFreteFixo|CalcularFrete(pedido:Pedido):decimal]
+[ICalculaDesconto]^-.[DescontoPascoa|CalcularDesconto(pedido:Pedido):decimal]
+[ICalculaDesconto]^-.[DescontoDiaDasMaes|CalcularDesconto(pedido:Pedido):decimal]
+[ICalculaDesconto]^-.[DescontoBlackFriday|CalcularDesconto(pedido:Pedido):decimal]

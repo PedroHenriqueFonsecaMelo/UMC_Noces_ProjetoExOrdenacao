@@ -3,6 +3,8 @@ using System.Collections;
 using System.Diagnostics;
 using System.Drawing;
 using ExOrdenacao.src.pt;
+using ExOrdenacao.src.pt.Strategy.Concreto.DescontoEx;
+using ExOrdenacao.src.pt.Strategy.Concreto.FreteEx;
 
 
 
@@ -67,8 +69,41 @@ class Program
                 Console.WriteLine("BucketSortTempo:    [{0}]", string.Join("    ", BucketSortTempo.ToArray()));
                 Console.WriteLine("CountingSortTempo:  [{0}]", string.Join("    ", CountingSortTempo.ToArray()));
         */
-        ExOrdenacaoTabela ordenacaoTabela = new();
-        ExOrdenacaoTabela.tabela();
+        //ExOrdenacaoTabela ordenacaoTabela = new();
+        //ExOrdenacaoTabela.tabela();
+
+        
+        
+        
+        // Criando um pedido com preço e peso
+        // Criando um pedido com preço total de 1000 e peso total de 20
+        Pedido pedido = new Pedido(1000, 20);
+
+        // Definindo a estratégia de cálculo de frete como "por peso"
+        pedido.SetCalculaFrete(new CalculoFretePeso());
+        pedido.CalcularFrete();
+        Console.WriteLine($"Frete por peso: {pedido.Frete}");
+
+        // Definindo a estratégia de cálculo de desconto como "Páscoa"
+        pedido.SetCalculaDesconto(new DescontoPascoa());
+        pedido.AplicarDesconto();
+        Console.WriteLine($"Desconto Páscoa: {pedido.Desconto}");
+
+        // Calculando o preço final após o desconto e frete
+        Console.WriteLine($"Preço final com desconto e frete: {pedido.PrecoComDescontoEfrete()}");
+
+        // Alterando a estratégia de frete para "fixo"
+        pedido.SetCalculaFrete(new CalculoFreteFixo());
+        pedido.CalcularFrete();
+        Console.WriteLine($"Frete fixo: {pedido.Frete}");
+
+        // Alterando a estratégia de desconto para "Black Friday"
+        pedido.SetCalculaDesconto(new DescontoBlackFriday());
+        pedido.AplicarDesconto();
+        Console.WriteLine($"Desconto Black Friday: {pedido.Desconto}");
+
+        // Calculando o novo preço final após alteração de frete e desconto
+        Console.WriteLine($"Novo preço final com desconto e frete: {pedido.PrecoComDescontoEfrete()}");
 
     }
 
