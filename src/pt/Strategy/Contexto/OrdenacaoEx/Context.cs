@@ -7,16 +7,14 @@ using ExOrdenacao.src.pt.Strategy.Concreto;
 
 namespace ExOrdenacao.src.pt.Strategy.Contexto
 {
-    public class Context
+    public class Context<T> where T : IComparable<T>
     {
-        private static ISortAlgorithm algorithm = new QuickSort();
-        static Random random = new Random();
-        static Stopwatch sw = Stopwatch.StartNew();
+        private static Random random = new Random();
+        private static Stopwatch sw = Stopwatch.StartNew();
 
+        public ISortAlgorithm<T> Strategy { get; set; }
 
-        public ISortAlgorithm Strategy { get => algorithm; set => algorithm = value; }
-
-        public double RunAlgorithmMultipleTimes(int[] array)
+        public double RunAlgorithmMultipleTimes(T[] array)
         {
             double totalTime = 0;
 
@@ -24,14 +22,13 @@ namespace ExOrdenacao.src.pt.Strategy.Contexto
             for (int i = 0; i < 3; i++)
             {
                 sw.Restart();
-                algorithm.SortMethod(array);  // Executa o algoritmo
+                Strategy.SortMethod(array);  // Executa o algoritmo
                 sw.Stop();
 
                 totalTime += sw.Elapsed.TotalMilliseconds;
-                sw.Reset();
 
                 // Exibe progresso e tempo restante
-                ShowProgress(i + 1, 3, totalTime, array.Length, algorithm.GetType().Name);
+                ShowProgress(i + 1, 3, totalTime, array.Length, Strategy.GetType().Name);
             }
 
             // Calcula a média

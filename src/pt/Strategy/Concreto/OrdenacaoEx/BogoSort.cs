@@ -6,7 +6,7 @@ using ExOrdenacao.src.pt.Strategy.Contexto;
 
 namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
-    public class BogoSort : ISortAlgorithm
+    public class BogoSort
     {
         static void Swap<T>(ref T lhs, ref T rhs)
         {

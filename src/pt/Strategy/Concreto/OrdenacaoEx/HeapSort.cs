@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ExOrdenacao.src.pt.Strategy.Contexto;
 
 namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
-    public class HeapSort : ISortAlgorithm
+    public class HeapSort<T> : ISortAlgorithm<T> where T : IComparable<T>
     {
-        public int[] SortMethod(int[] arr)
+        public T[] SortMethod(T[] arr)
         {
             int n = arr.Length;
-            int[] sortedArray = (int[])arr.Clone();
+            T[] sortedArray = (T[])arr.Clone(); // Faz uma cópia do array original
 
             // Construir o heap
             for (int i = n / 2 - 1; i >= 0; i--)
@@ -22,7 +21,7 @@ namespace ExOrdenacao.src.pt.Strategy.Concreto
             // Extrair elementos do heap
             for (int i = n - 1; i >= 0; i--)
             {
-                int temp = sortedArray[0];
+                T temp = sortedArray[0];
                 sortedArray[0] = sortedArray[i];
                 sortedArray[i] = temp;
 
@@ -32,25 +31,27 @@ namespace ExOrdenacao.src.pt.Strategy.Concreto
             return sortedArray;
         }
 
-        private static void Heapify(int[] arr, int n, int i)
+        private static void Heapify(T[] arr, int n, int i)
         {
             int largest = i;
             int left = 2 * i + 1;
             int right = 2 * i + 2;
 
-            if (left < n && arr[left] > arr[largest])
+            // Comparar os elementos para garantir a propriedade de heap
+            if (left < n && arr[left].CompareTo(arr[largest]) > 0)
             {
                 largest = left;
             }
 
-            if (right < n && arr[right] > arr[largest])
+            if (right < n && arr[right].CompareTo(arr[largest]) > 0)
             {
                 largest = right;
             }
 
+            // Se o maior não for o nó atual, trocar e aplicar heapify recursivamente
             if (largest != i)
             {
-                int swap = arr[i];
+                T swap = arr[i];
                 arr[i] = arr[largest];
                 arr[largest] = swap;
 

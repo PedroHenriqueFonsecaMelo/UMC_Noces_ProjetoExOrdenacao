@@ -1,33 +1,33 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ExOrdenacao.src.pt.Strategy.Contexto;
 
 namespace ExOrdenacao.src.pt.Strategy.Concreto
 {
-    public class SelectionSort : ISortAlgorithm
-{
-    public int[] SortMethod(int[] arr)
+    public class SelectionSort<T> : ISortAlgorithm<T> where T : IComparable<T>
     {
-        int n = arr.Length;
-        int[] sortedArray = (int[])arr.Clone();
-        for (int i = 0; i < n - 1; i++)
+        public T[] SortMethod(T[] arr)
         {
-            int minIndex = i;
-            for (int j = i + 1; j < n; j++)
+            int n = arr.Length;
+            T[] sortedArray = (T[])arr.Clone();
+            
+            for (int i = 0; i < n - 1; i++)
             {
-                if (sortedArray[j] < sortedArray[minIndex])
+                int minIndex = i;
+                for (int j = i + 1; j < n; j++)
                 {
-                    minIndex = j;
+                    if (sortedArray[j].CompareTo(sortedArray[minIndex]) < 0)
+                    {
+                        minIndex = j;
+                    }
                 }
+                
+                // Troca os elementos
+                T temp = sortedArray[i];
+                sortedArray[i] = sortedArray[minIndex];
+                sortedArray[minIndex] = temp;
             }
-            int temp = sortedArray[i];
-            sortedArray[i] = sortedArray[minIndex];
-            sortedArray[minIndex] = temp;
+            return sortedArray;
         }
-        return sortedArray;
     }
-}
-
 }
