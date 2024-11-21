@@ -70,41 +70,29 @@ class Program
                 Console.WriteLine("CountingSortTempo:  [{0}]", string.Join("    ", CountingSortTempo.ToArray()));
         */
         //ExOrdenacaoTabela ordenacaoTabela = new();
-        //ExOrdenacaoTabela.tabela();
+        ExOrdenacaoTabela.tabela();
 
-        
-        
-        
-        // Criando um pedido com preço e peso
-        // Criando um pedido com preço total de 1000 e peso total de 20
-        Pedido pedido = new Pedido(1000, 20);
 
-        // Definindo a estratégia de cálculo de frete como "por peso"
-        pedido.SetCalculaFrete(new CalculoFretePeso());
-        pedido.CalcularFrete();
-        Console.WriteLine($"Frete por peso: {pedido.Frete}");
+        // Criando um pedido com preço total de 500 e peso total de 10
+        var pedido = new Pedido(500, 10);
 
-        // Definindo a estratégia de cálculo de desconto como "Páscoa"
-        pedido.SetCalculaDesconto(new DescontoPascoa());
-        pedido.AplicarDesconto();
-        Console.WriteLine($"Desconto Páscoa: {pedido.Desconto}");
+        // Aplicando as estratégias de frete e desconto dinamicamente
 
-        // Calculando o preço final após o desconto e frete
-        Console.WriteLine($"Preço final com desconto e frete: {pedido.PrecoComDescontoEfrete()}");
+        // Definindo a estratégia de frete por peso
+        pedido.AplicarFrete(new CalculoFretePeso());
+        // Definindo a estratégia de desconto de Páscoa
+        pedido.AplicarDesconto(new DescontoPascoa());
 
-        // Alterando a estratégia de frete para "fixo"
-        pedido.SetCalculaFrete(new CalculoFreteFixo());
-        pedido.CalcularFrete();
-        Console.WriteLine($"Frete fixo: {pedido.Frete}");
+        // Exibindo o resumo do pedido
+        pedido.Summary();
 
-        // Alterando a estratégia de desconto para "Black Friday"
-        pedido.SetCalculaDesconto(new DescontoBlackFriday());
-        pedido.AplicarDesconto();
-        Console.WriteLine($"Desconto Black Friday: {pedido.Desconto}");
+        // Alterando as estratégias
+        // Alterando para frete fixo e desconto para Black Friday
+        pedido.AplicarFrete(new CalculoFreteFixo());
+        pedido.AplicarDesconto(new DescontoBlackFriday());
 
-        // Calculando o novo preço final após alteração de frete e desconto
-        Console.WriteLine($"Novo preço final com desconto e frete: {pedido.PrecoComDescontoEfrete()}");
-
+        // Exibindo o novo resumo do pedido
+        pedido.Summary();
     }
 
     static void SortTests(Stopwatch sw, int[] array, Random random)
