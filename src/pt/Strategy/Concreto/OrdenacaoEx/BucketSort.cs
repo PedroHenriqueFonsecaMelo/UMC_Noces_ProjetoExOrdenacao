@@ -17,8 +17,8 @@ namespace ExOrdenacao.src.pt.Strategy.Concreto
             if (arr == null || arr.Length == 0)
                 throw new ArgumentException("Array não pode ser nulo ou vazio.");
                 
-            T max = arr.Max();
-            T min = arr.Min();
+            T? max = arr.Max();
+            T? min = arr.Min();
 
             // Número de baldes
             int bucketCount = arr.Length;
@@ -31,11 +31,12 @@ namespace ExOrdenacao.src.pt.Strategy.Concreto
             }
 
             // Distribuir os elementos para os baldes
-            foreach (T num in arr)
-            {
-                int bucketIndex = GetBucketIndex(num, min, max, bucketCount);
-                buckets[bucketIndex].Add(num);
-            }
+            if (max != null && min != null)
+                foreach (T num in arr)
+                {
+                    int bucketIndex = GetBucketIndex(num, min, max, bucketCount);
+                    buckets[bucketIndex].Add(num);
+                }
 
             // Ordenar os baldes e combinar os resultados
             T[] sortedArray = new T[arr.Length];
@@ -72,7 +73,8 @@ namespace ExOrdenacao.src.pt.Strategy.Concreto
                 string? val = value as string;
                 string? minVal = min as string;
                 string? maxVal = max as string;
-                return (int)(val.CompareTo(minVal) * (bucketCount - 1) / maxVal.CompareTo(minVal));
+                if(val != null && maxVal != null)
+                    return (int)(val.CompareTo(minVal) * (bucketCount - 1) / maxVal.CompareTo(minVal));
             }
 
             // Para outros tipos que não são numéricos ou string, podemos lançar uma exceção.
