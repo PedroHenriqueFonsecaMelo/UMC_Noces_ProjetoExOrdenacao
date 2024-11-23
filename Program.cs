@@ -72,27 +72,28 @@ class Program
         //ExOrdenacaoTabela ordenacaoTabela = new();
         ExOrdenacaoTabela.tabela();
 
+        /*
+       // Criando um pedido com preço total de 500 e peso total de 10
+       var pedido = new Pedido(500, 10);
 
-        // Criando um pedido com preço total de 500 e peso total de 10
-        var pedido = new Pedido(500, 10);
+       // Aplicando as estratégias de frete e desconto dinamicamente
 
-        // Aplicando as estratégias de frete e desconto dinamicamente
+       // Definindo a estratégia de frete por peso
+       pedido.AplicarFrete(new CalculoFretePeso());
+       // Definindo a estratégia de desconto de Páscoa
+       pedido.AplicarDesconto(new DescontoPascoa());
 
-        // Definindo a estratégia de frete por peso
-        pedido.AplicarFrete(new CalculoFretePeso());
-        // Definindo a estratégia de desconto de Páscoa
-        pedido.AplicarDesconto(new DescontoPascoa());
+       // Exibindo o resumo do pedido
+       pedido.Summary();
 
-        // Exibindo o resumo do pedido
-        pedido.Summary();
+       // Alterando as estratégias
+       // Alterando para frete fixo e desconto para Black Friday
+       pedido.AplicarFrete(new CalculoFreteFixo());
+       pedido.AplicarDesconto(new DescontoBlackFriday());
 
-        // Alterando as estratégias
-        // Alterando para frete fixo e desconto para Black Friday
-        pedido.AplicarFrete(new CalculoFreteFixo());
-        pedido.AplicarDesconto(new DescontoBlackFriday());
-
-        // Exibindo o novo resumo do pedido
-        pedido.Summary();
+       // Exibindo o novo resumo do pedido
+       pedido.Summary();
+       */
     }
 
     static void SortTests(Stopwatch sw, int[] array, Random random)

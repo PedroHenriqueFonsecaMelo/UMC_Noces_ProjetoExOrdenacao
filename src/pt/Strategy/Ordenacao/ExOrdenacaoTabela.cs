@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using ExOrdenacao.src.pt.Bridge;
+using ExOrdenacao.src.pt.Prototype.Concreto;
+using ExOrdenacao.src.pt.Prototype.Interface;
 using ExOrdenacao.src.pt.Strategy;
 using ExOrdenacao.src.pt.Strategy.Concreto;
 using ExOrdenacao.src.pt.Strategy.Contexto;
@@ -24,9 +27,9 @@ namespace ExOrdenacao.src.pt
         static ArrayList CountingSortTempo = new();
         static Random random = new Random();
 
-        static Context<int> context = new();
-        static Context<double> contextDouble = new Context<double>();
-        static Context<string> contextString = new Context<string>();
+        static BridgeContext<int> contextInt = new();
+        static BridgeContext<double> contextDouble = new();
+        static BridgeContext<string> contextString = new();
 
         public ExOrdenacaoTabela() { }
 
@@ -86,63 +89,73 @@ namespace ExOrdenacao.src.pt
             // Algoritmos de ordenação
 
             IPrototype<T> arrayPrototype = new ArrayDadosPrototype<T>(array);
-            
+
 
             if (type == "int")
             {
-                RunSortTests(context, arrayPrototype.Clonar());
+                ArrayDadosPrototype<int> clonedPrototype = (ArrayDadosPrototype<int>)arrayPrototype.Clonar();
+                contextInt.SetDataPrototype(clonedPrototype);
+
+                RunSortTests(contextInt);
             }
             else if (type == "double")
             {
-                RunSortTests(contextDouble, arrayPrototype.Clonar());
+                ArrayDadosPrototype<double> clonedPrototype = (ArrayDadosPrototype<double>)arrayPrototype.Clonar();
+                contextDouble.SetDataPrototype(clonedPrototype);
+
+                RunSortTests(contextDouble);
+                
             }
             else if (type == "string")
             {
-                RunSortTests(contextString, arrayPrototype.Clonar());
+                ArrayDadosPrototype<string> clonedPrototype = (ArrayDadosPrototype<string>)arrayPrototype.Clonar();
+                 contextString.SetDataPrototype(clonedPrototype);
+
+                RunSortTests(contextString);
             }
         }
 
-        public static void RunSortTests<T>(Context<T> context, T[] array) where T : IComparable<T>
+        public static void RunSortTests<T>(BridgeContext<T> context) where T : IComparable<T>
         {
 
             Console.Clear();
-            Console.WriteLine($"Testando array de tamanho: {array.Length}");
+            Console.WriteLine($"Testando array de tamanho: {context.GetDataPrototype().GetArray().Length}");
 
             // Algoritmos de ordenação
-            context.Strategy = new QuickSort<T>();
-            double quickSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new QuickSort<T>());
+            double quickSortAvg = context.RunAlgorithmMultipleTimes();
             QuickSortTempo.Add(quickSortAvg);
 
-            context.Strategy = new SelectionSort<T>();
-            double selectionSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new SelectionSort<T>());
+            double selectionSortAvg = context.RunAlgorithmMultipleTimes();
             SelectionSortTempo.Add(selectionSortAvg);
 
-            context.Strategy = new InsertionSort<T>();
-            double insertionSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new InsertionSort<T>());
+            double insertionSortAvg = context.RunAlgorithmMultipleTimes();
             InsertionSortTempo.Add(insertionSortAvg);
 
-            context.Strategy = new MergeSort<T>();
-            double mergeSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new MergeSort<T>());
+            double mergeSortAvg = context.RunAlgorithmMultipleTimes();
             MergeSortTempo.Add(mergeSortAvg);
 
-            context.Strategy = new BubbleSort<T>();
-            double bubbleSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new BubbleSort<T>());
+            double bubbleSortAvg = context.RunAlgorithmMultipleTimes();
             BubbleSortTempo.Add(bubbleSortAvg);
 
-            context.Strategy = new RadixSort<T>();
-            double radixSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new RadixSort<T>());
+            double radixSortAvg = context.RunAlgorithmMultipleTimes();
             RadixSortTempo.Add(radixSortAvg);
 
-            context.Strategy = new CountingSort<T>();
-            double countingSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new CountingSort<T>());
+            double countingSortAvg = context.RunAlgorithmMultipleTimes();
             CountingSortTempo.Add(countingSortAvg);
 
-            context.Strategy = new BucketSort<T>();
-            double bucketSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new BucketSort<T>());
+            double bucketSortAvg = context.RunAlgorithmMultipleTimes();
             BucketSortTempo.Add(bucketSortAvg);
 
-            context.Strategy = new HeapSort<T>();
-            double heapSortAvg = context.RunAlgorithmMultipleTimes(array);
+            context.SetSortAlgorithm(new HeapSort<T>());
+            double heapSortAvg = context.RunAlgorithmMultipleTimes();
             HeapSortTempo.Add(heapSortAvg);
         }
 

@@ -1,46 +1,90 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using ExOrdenacao.src.pt.Strategy.Concreto;
-using System.Text;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using ExOrdenacao.src.pt.Prototype.Interface;
+using ExOrdenacao.src.pt.Strategy.Contexto;
 
-namespace ExOrdenacao.src.pt.Strategy.Contexto
+namespace ExOrdenacao.src.pt.Bridge
 {
-    public class Context<T> where T : IComparable<T>
+    public class BridgeContext<T> where T : IComparable<T>
     {
+        private ISortAlgorithm<T>? _sortAlgorithm { get; set; }
+        private IPrototype<T>? _dataPrototype { get; set; }
         private static Random random = new Random();
         private static Stopwatch sw = Stopwatch.StartNew();
 
-        public ISortAlgorithm<T>? Strategy { get; set; }
-        public IPrototype<T>? DataPrototype { get; set; }  // Novo campo para armazenar o protótipo de dados
+        // Construtor da abstração (Strategy + Prototype)
+        public BridgeContext(ISortAlgorithm<T> sortAlgorithm, IPrototype<T> dataPrototype)
+        {
+            _sortAlgorithm = sortAlgorithm;
+            _dataPrototype = dataPrototype;
+        }
 
-        public double RunAlgorithmMultipleTimes(T[] array)
+        public BridgeContext()
+        {
+        }
+
+        // Definir o algoritmo de ordenação
+        public void SetSortAlgorithm(ISortAlgorithm<T> sortAlgorithm)
+        {
+            _sortAlgorithm = sortAlgorithm;
+        }
+
+        // Definir o protótipo de dados
+        public void SetDataPrototype(IPrototype<T> dataPrototype)
+        {
+            _dataPrototype = dataPrototype;
+        }
+
+        public ISortAlgorithm<T> GetSortAlgorithm(ISortAlgorithm<T> sortAlgorithm)
+        {
+            if (_sortAlgorithm == null || _dataPrototype == null)
+            {
+                throw new InvalidOperationException("Sort algorithm or data prototype not set.");
+            }
+
+            return _sortAlgorithm;
+        }
+
+        // Definir o protótipo de dados
+        public IPrototype<T> GetDataPrototype()
+        {
+            if (_sortAlgorithm == null || _dataPrototype == null)
+            {
+                throw new InvalidOperationException("Sort algorithm or data prototype not set.");
+            }
+
+            return _dataPrototype;
+        }
+
+        public double RunAlgorithmMultipleTimes()
         {
             double totalTime = 0;
+            if (_sortAlgorithm == null || _dataPrototype == null)
+            {
+                throw new InvalidOperationException("Sort algorithm or data prototype not set.");
+            }
+
+            T[] array = _dataPrototype.GetArray();
 
             // Executa o algoritmo 3 vezes
             for (int i = 0; i < 3; i++)
             {
                 sw.Restart();
-
-                if (Strategy != null && DataPrototype != null)
+                if (_sortAlgorithm != null)
                 {
-                    // Clona o protótipo de dados para evitar modificar o array original
-                    T[] clonedArray = DataPrototype.Clonar().GetArray();
-
-                    // Executa o algoritmo
-                    Strategy.SortMethod(clonedArray);
+                    _sortAlgorithm.SortMethod(array);  // Executa o algoritmo
 
                     sw.Stop();
 
                     totalTime += sw.Elapsed.TotalMilliseconds;
 
                     // Exibe progresso e tempo restante
-                    ShowProgress(i + 1, 3, totalTime, array.Length, Strategy.GetType().Name);
+                    ShowProgress(i + 1, 3, totalTime, array.Length, _sortAlgorithm.GetType().Name);
                 }
             }
 
@@ -96,5 +140,6 @@ namespace ExOrdenacao.src.pt.Strategy.Contexto
             TimeSpan timeSpan = TimeSpan.FromMilliseconds(timeInMilliseconds);
             return string.Format("{0:D2}:{1:D2}:{2:D3}", timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
         }
+
     }
 }
