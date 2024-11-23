@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "a9upxQq/Vrw=",
+  "dgSpecHash": "DZpvo7F29kQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\alunocmc\\Downloads\\novo\\UMC_Noces_ProjetoExOrdenacao\\ExOrdenacao.csproj",
+  "projectFilePath": "C:\\Users\\Pedro Henrique\\Documents\\Umc\\Codigos UMC\\UMC_Noces_ProjetoExOrdenacao\\UMC_Noces_ProjetoExOrdenacao\\ExOrdenacao\\ExOrdenacao.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\alunocmc\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
-    "C:\\Users\\alunocmc\\.nuget\\packages\\spectre.console\\0.49.1\\spectre.console.0.49.1.nupkg.sha512",
-    "C:\\Users\\alunocmc\\.nuget\\packages\\system.drawing.common\\8.0.10\\system.drawing.common.8.0.10.nupkg.sha512"
+    "C:\\Users\\Pedro Henrique\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\Pedro Henrique\\.nuget\\packages\\spectre.console\\0.49.1\\spectre.console.0.49.1.nupkg.sha512",
+    "C:\\Users\\Pedro Henrique\\.nuget\\packages\\system.drawing.common\\8.0.10\\system.drawing.common.8.0.10.nupkg.sha512"
   ],
   "logs": []
 }

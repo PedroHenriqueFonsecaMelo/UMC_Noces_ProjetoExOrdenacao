@@ -98,3 +98,12 @@ C:\Users\alunocmc\Desktop\UMC_Noces_ProjetoExOrdenacao-main\UMC_Noces_ProjetoExO
 C:\Users\alunocmc\Desktop\UMC_Noces_ProjetoExOrdenacao-main\UMC_Noces_ProjetoExOrdenacao-main\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.pdb
 C:\Users\alunocmc\Desktop\UMC_Noces_ProjetoExOrdenacao-main\UMC_Noces_ProjetoExOrdenacao-main\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.genruntimeconfig.cache
 C:\Users\alunocmc\Desktop\UMC_Noces_ProjetoExOrdenacao-main\UMC_Noces_ProjetoExOrdenacao-main\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ref\ExOrdenacao.dll
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.csproj.AssemblyReference.cache
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.AssemblyInfoInputs.cache
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.AssemblyInfo.cs
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.csproj.CoreCompileInputs.cache
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.sourcelink.json
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.dll
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\refint\ExOrdenacao.dll
+c:\Users\Pedro Henrique\Documents\Umc\Codigos UMC\UMC_Noces_ProjetoExOrdenacao\UMC_Noces_ProjetoExOrdenacao\ExOrdenacao\obj\Debug\net8.0\ExOrdenacao.pdb

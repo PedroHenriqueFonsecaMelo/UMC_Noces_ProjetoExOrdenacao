@@ -85,17 +85,20 @@ namespace ExOrdenacao.src.pt
 
             // Algoritmos de ordenação
 
+            IPrototype<T> arrayPrototype = new ArrayDadosPrototype<T>(array);
+            
+
             if (type == "int")
             {
-                RunSortTests(context, (int[]) array.Clone());
+                RunSortTests(context, arrayPrototype.Clonar());
             }
             else if (type == "double")
             {
-                RunSortTests(contextDouble, (double[]) array.Clone());
+                RunSortTests(contextDouble, arrayPrototype.Clonar());
             }
             else if (type == "string")
             {
-                RunSortTests(contextString, (string[]) array.Clone());
+                RunSortTests(contextString, arrayPrototype.Clonar());
             }
         }
 
